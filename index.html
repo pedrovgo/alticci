@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Alticci</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+    <style>
+      html, body {
+      min-height: 100%;
+      }
+      body, div, form, input, p {
+      padding: 0;
+      margin: 0;
+      outline: none;
+      font-family: Roboto, Arial, sans-serif;
+      font-size: 14px;
+      color: #666;
+      line-height: 22px;
+      }
+      h1 {
+      font-weight: 400;
+      }
+      .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: inherit;
+      padding: 3px;
+      }
+      form {
+      width: 100%;
+      padding: 20px;
+      background: #fff;
+      box-shadow: 0 2px 5px #ccc;
+      }
+      input {
+      width: calc(100% - 10px);
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      vertical-align: middle;
+      }
+      input:hover, textarea:hover {
+      outline: none;
+      border: 1px solid #095484;
+      }
+      .btn-send {
+      margin-top: 20px;
+      text-align: center;
+      }
+      button {
+      width: 150px;
+      padding: 10px;
+      border: none;
+      -webkit-border-radius: 5px;
+      -moz-border-radius: 5px;
+      border-radius: 5px;
+      background-color: #095484;
+      font-size: 16px;
+      color: #fff;
+      cursor: pointer;
+      }
+      button:hover {
+      background-color: #0666a3;
+      }
+    </style>
+</head>
+<body>
+<div class="box">
+    <form action="/">
+        <h1>Alticci</h1>
+        <p>Informe o número da sequência para obter o resultado.</p>
+        <input id="n" type="number" name="n" placeholder="n" min="0" />
+        <div class="btn-send">
+            <button type="button" onclick="send()">Enviar</button>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    function send() {
+        var value = document.getElementById('n').value;
+
+        if(value){
+            var url = 'http://localhost:8080/alticci/';
+
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open('GET', url + value, false);
+            xmlHttp.send(null);
+            alert('Resultado: ' + xmlHttp.responseText);
+        }
+    }
+</script>
+</html>
